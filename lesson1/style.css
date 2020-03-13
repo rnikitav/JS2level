@@ -1,0 +1,94 @@
+body {
+  background-color: #242425;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+header {
+  background-color: darkturquoise;
+}
+
+.goods-list {
+  display: flex;
+  justify-content: space-between;
+  color: #ffffff;
+}
+
+.goods-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.goods-item > h3 {
+  font-size: 30px;
+}
+.goods-item > p {
+  color: aqua;
+  font-size: 20px;
+}
+.goods-item > button {
+  font-size: 14px;
+  border-radius: 5%;
+}
+
+.first {
+  min-width: 429px;
+  min-height: 462px;
+}
+
+.hidden {
+  display: none;
+}
+
+.droplist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+  position: absolute;
+  width: fit-content;
+  background-color: #fff;
+  border: 1px solid white;
+}
+.droplist > button {
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: burlywood;
+}
+.droplist__inner {
+  display: flex;
+  padding: 10px;
+  border-bottom: 2px solid grey;
+}
+.droplist__inner > h3 {
+  color: aqua;
+}
+.droplist__inner > img {
+  width: 150px;
+}
+.droplist__inner > p {
+  color: fuchsia;
+}
+
+.totalPrice {
+  color: darkred;
+  font-size: 25px;
+}
+
+.fa-cart-arrow-down {
+  position: relative;
+  margin: 20px;
+  padding-left: 22px;
+  font-size: 30px;
+  color: aliceblue;
+}
+
+/*# sourceMappingURL=style.css.map */
