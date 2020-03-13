@@ -12,7 +12,7 @@ const renderGoodsItem = (title, price, img = "http://unsplash.it/250/349?random&
                     <h3>${title}</h3>
                     <img src=${img} alt="${title}">
                     <p>${price}</p>
-                    <button>Добавить в корзину</button>
+                    <button class="buy-btn">Добавить в корзину</button>
                 </div>`;
 };
 
