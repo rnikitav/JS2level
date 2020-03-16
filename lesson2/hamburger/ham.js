@@ -261,7 +261,7 @@ document.querySelector('.btn_buy').addEventListener('click' , (event) => {
         }
     });
     if(count === 0){
-        event.stopPropagation()
+        event.stopPropagation();
         alert("Нужно выбрать хотя бы одну добавку")
     }
 });

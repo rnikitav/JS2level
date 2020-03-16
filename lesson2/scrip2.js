@@ -24,7 +24,7 @@ class ProductList {
         const divForProducts = document.querySelector(this.container);
         this.goods.forEach(product => {
             const productObject = new ProductItem(product.title, product.id, product.price, product.img);
-            this.allPrtsoducts.push(productObject);
+            this.allProducts.push(productObject);
             divForProducts.insertAdjacentHTML('beforeend', productObject.render());
         })
     }
