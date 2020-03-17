@@ -35,15 +35,6 @@ class ProductList {
         let sumPrice = `Общая сумма товаров равна: ${sum}  &#8381;`;
         divForPrice.insertAdjacentHTML('afterbegin', sumPrice);
     }
-
-    // Сократил программу, убрав этот метод использовав reduce
-    // _sumAllPrices(){
-    //     let sum = 0;
-    //     this.goods.forEach(product => {
-    //         sum += +product.price;
-    //     });
-    //     return sum;
-// }
 }
 
 class ProductItem {
@@ -171,19 +162,33 @@ buttons.forEach(function (button) {
 
 
 // Добавляем слушатель событий для кнопки корзины
+class EventListenerToBasket {
+    constructor(containerForBasketIconClick = '.fa-cart-arrow-down', containerForDropList = '.Cartdroplist') {
+        this.dropCart = document.querySelector(containerForBasketIconClick);
+        this.dropList = document.querySelector(containerForDropList);
+        this._addClick();
+        this._addMouseLeave();
+    }
 
-let dropCart = window.document.getElementsByClassName('fa-cart-arrow-down')[0];
-let dropAll = document.querySelector('.Cartdroplist');
-dropCart.addEventListener('click', () => {
-    dropAll.style.display = "flex";
-    dropAll.classList.add('zoomIn');
-    dropAll.classList.remove('zoomOut');
+    _addClick(){
+        this.dropCart.addEventListener('click', () => {
+            this.dropList.style.display = "flex";
+            this.dropList.classList.add('zoomIn');
+            this.dropList.classList.remove('zoomOut');
 
-});
-dropAll.addEventListener('mouseleave', () => {
-    dropAll.classList.remove('zoomIn');
-    dropAll.classList.add('zoomOut');
-    setTimeout(() => {
-        dropAll.style.display = "none"
-    }, 1000)
-});
+        });
+    }
+
+    _addMouseLeave(){
+        this.dropList.addEventListener('mouseleave', () => {
+            this.dropList.classList.remove('zoomIn');
+            this.dropList.classList.add('zoomOut');
+            setTimeout(() => {
+                this.dropList.style.display = "none"
+            }, 1000)
+        })
+    }
+}
+
+
+new EventListenerToBasket();
