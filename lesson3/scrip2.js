@@ -1,5 +1,27 @@
 'use strict';
 
+const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses'
+
+//Переделать в ДЗ
+let getRequest = (url) => {
+    return new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+
+        xhr.onreadystatechange = () => {
+
+            if (xhr.readyState === 4) {
+                if (xhr.status !== 200) {
+                    reject('Error'); //reject
+                } else {
+                    resolve(xhr.responseText);   //resolve
+                }
+            }
+        };
+        xhr.send();
+    });
+};
+
 class ProductList {
     constructor(container = '.goods-list', totalPrice = '.totalPriceMain') {
         this.container = container;
@@ -7,23 +29,37 @@ class ProductList {
         this.goods = [];
         this.allProducts = [];
         this._fetchProducts();
-        this._render();
-        this._renderSum();
+        // this._getProducts()
+        //     .then((data) => {
+        //         this.goods = [...data];
+        //         this._render();
+        //         this._renderSum();
     }
 
     _fetchProducts() {
-        this.goods = [
-            {id: 1, title: 'Samsung', price: '20000'},
-            {id: 2, title: 'Iphone 11 Pro', price: '80000'},
-            {id: 3, title: 'Iphone 11 ProMax', price: '150000', img: "img/pro200x150.png"},
-            {id: 4, title: 'Iphone 11', price: '60000'},
-        ];
+        getRequest(`${API}/catalogData.json`).then((data) => {
+            data = JSON.parse(data);
+            this.goods = [...data];
+            this._render();
+            this._renderSum();
+            new EventListenerToBasket();
+        }).catch((error) => {
+            console.log(error);
+        })
     }
+
+    // _getProducts() {
+    //     return fetch(`${API}/catalogData.json`)
+    //         .then(result => result.json())
+    //         .catch(error => {
+    //             console.log('Не удалось загрузить файл', error);
+    //         });
+    // }
 
     _render() {
         const divForProducts = document.querySelector(this.container);
         this.goods.forEach(product => {
-            const productObject = new ProductItem(product.title, product.id, product.price, product.img);
+            const productObject = new ProductItem(product.product_name, product.id_product, product.price, product.img);
             this.allProducts.push(productObject);
             divForProducts.insertAdjacentHTML('beforeend', productObject.render());
         })
@@ -153,12 +189,7 @@ class Basket {
 
 let myCart = new Basket();
 
-const buttons = document.querySelectorAll('.buy-btn');
-buttons.forEach(function (button) {
-    button.addEventListener('click', function (event) {
-        myCart._fetchProductsInBasket(event);
-    })
-});
+
 
 
 // Добавляем слушатель событий для кнопки корзины
@@ -168,6 +199,7 @@ class EventListenerToBasket {
         this.dropList = document.querySelector(containerForDropList);
         this._addClick();
         this._addMouseLeave();
+        this._addButton();
     }
 
     _addClick(){
@@ -176,6 +208,15 @@ class EventListenerToBasket {
             this.dropList.classList.add('zoomIn');
             this.dropList.classList.remove('zoomOut');
 
+        });
+    }
+
+    _addButton(){
+        const buttons = document.querySelectorAll('.buy-btn');
+        buttons.forEach(function (button) {
+            button.addEventListener('click', function (event) {
+                myCart._fetchProductsInBasket(event);
+            })
         });
     }
 
@@ -191,4 +232,3 @@ class EventListenerToBasket {
 }
 
 
-new EventListenerToBasket();
