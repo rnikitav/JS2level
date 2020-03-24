@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form dz4</title>
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/Base.css">
+</head>
+<body>
+<form action="https://yandex.ru/">
+    <p><i>Пожалуйста, заполните форму регистрации пользователей. Все поля обезательные</i>
+    <fieldset>
+        <legend>Контактная информация</legend>
+        <label for="name">ФИО</label>
+        <input id="name" placeholder="Иванов Иван Иванович" autofocus>
+        <label class="name_error label_error">ФИО может содержать только буквы</label>
+        <br>
+        <label for="telephone">Телефон</label>
+        <input id="telephone" placeholder="+7-903-955-55-55">
+        <label class="name_error label_error">Телефон в формате +7(ххх)ххх-хххх</label>
+        <br>
+        <label for="email">Email </label>
+        <input id="email" placeholder="email@server.com">
+        <label class="name_error label_error">Email в формате my-mail.mail.ru</label>
+        <br>
+        <label for="text">Комментарий</label>
+        <textarea name="commit" id="text" cols="30" rows="10"></textarea>
+        <br>
+        <button class="snd-btn">Send</button>
+    </fieldset>
+</form>
+<script>
+    class SendForm {
+        constructor(container, el) {
+            this.container = container;
+            this.el = el;
+            this.inputs = this.container.getElementsByTagName('input');
+            this.init();
+        }
+
+        init() {
+            for (let i = 0; i < this.inputs.length; i++) {
+                if (this.inputs[i].value === "") {
+                    this.inputs[i].style.outline = '2px solid red';
+                    this.inputs[i].placeholder = 'Обязательные данные';
+                    this.el.preventDefault();
+                    continue;
+                }
+                if (this.inputs[i].id === 'name') {
+                    if (this.inputs[i].value.match(/[a-zA-Zа-я]{3,}/gi) == null) {
+                        this.notApproved(this.inputs[i]);
+                        continue;
+                    }else {
+                        this.approved(this.inputs[i])
+                    }
+                }
+                if (this.inputs[i].id === 'telephone') {
+                    if (this.inputs[i].value.match(/\+\d\(\d{3}\)\d{3}-\d{4}/g) == null) {
+                        this.notApproved(this.inputs[i]);
+                        continue;
+                    }else {
+                        this.approved(this.inputs[i])
+                    }
+                }
+                if (this.inputs[i].id === 'email') {
+                    if (this.inputs[i].value.match(/\w+[.-]*\w+@\w+\.\w+/gi) == null) {
+                        this.notApproved(this.inputs[i]);
+                    }else {
+                        this.approved(this.inputs[i])
+                    }
+                }
+            }
+        }
+
+        notApproved(elem) {
+            this.el.preventDefault();
+            elem.nextElementSibling.style.display = 'inline-block';
+            elem.style.outline = '2px solid red';
+        }
+        approved(elem){
+            elem.style.outline = 'none';
+            elem.nextElementSibling.style.display = 'none';
+        }
+    }
+
+
+    document.getElementsByTagName("fieldset")[0].addEventListener('click', el => {
+        if (el.target.classList.contains('snd-btn')) {
+            const send = new SendForm(el.target.parentNode.parentNode, el)
+        }
+    });
+
+
+</script>
+</body>
+</html>
