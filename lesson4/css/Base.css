@@ -1,0 +1,145 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Задание параметров для фона */
+body
+{
+	background-image: url(../image/f.jpg);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-color: #D3E9F9;
+	min-width: 800px; /* Минимальный размер блока */
+	max-width: 1100px; /* Максимальный размер элемента*/
+	width:90%; /* Ширина блока*/
+	margin: 15px auto;
+}
+
+
+/* Блоки элементов */
+#block
+{
+	background-color: #D3E9F9;
+	border:thin #54985B solid; /* Выбор границ элемента*/
+	padding: 10px; /* Пространство внутри элемента*/ 
+	margin: 15px auto; /* Пространство за пределами документа. В данном случае располагает по центру*/
+	width:90%; /* Ширина блока*/
+	text-align:center; /* Расположение текста внутри элемента*/
+}
+
+/* Блоки навигации*/
+nav {
+	background-color: #D3E9F9;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+
+	margin: auto;
+	width:90%; /* Ширина блока*/
+	text-align:center; /* Расположение текста внутри элемента*/
+	border:1px solid #ccc;
+}
+
+nav a {
+	display:inline;
+	padding:10px;
+	text-decoration:none;
+	background-color:#f1f1f1;
+}
+ 
+nav a:hover {
+	background-color:#bababa;
+	height:80px;
+}
+/* Конец блоков навигации*/
+
+/* Верхний колонтитул (шапка) */
+
+header
+{
+	background-color: #D3E9F9; /* Цвет фона элемента*/
+	border:thin #54985B solid; /* Выбор границ элемента*/
+	padding: 10px; /* Пространство внутри элемента*/ 
+	margin: 15px auto; /* Пространство за пределами документа. В данном случае располагает по центру*/
+	margin-bottom: 10px; /* Отступ снизу элемента*/
+	margin-top: 10px; /* Отступ сверху элемента*/
+	text-align:center; /* Расположение текста внутри элемента*/
+	width:90%; /* Ширина блока*/
+}
+
+footer
+{
+	background-color: #D3E9F9; /* Цвет фона элемента*/
+	border:thin #54985B solid; /* Выбор границ элемента*/
+	padding: 10px; /* Пространство внутри элемента*/ 
+	margin: auto; /* Пространство за пределами документа. В данном случае располагает по центру*/
+	margin-bottom: 10px; /* Отступ снизу элемента*/
+	margin-top: 10px; /* Отступ сверху элемента*/
+	text-align:left; /* Расположение текста внутри элемента*/
+	width:90%; /* Ширина блока*/
+	min-width: 800px; /* Минимальный размер блока */
+	max-width: 1100px; /* Максимальный размер элемента*/
+}
+
+#content
+{
+	background-color: #D3E9F9; /* Цвет фона элемента*/
+	border:thin #54985B solid; /* Выбор границ элемента*/
+	padding: 10px; /* Пространство внутри элемента*/ 
+	margin: auto; /* Пространство за пределами документа. В данном случае располагает по центру*/
+	margin-bottom: 10px; /* Отступ снизу элемента*/
+	margin-top: 10px; /* Отступ сверху элемента*/
+	text-align:justify; /* Расположение текста внутри элемента*/
+	width:90%; /* Ширина блока*/
+}
+
+article
+{
+	
+}
+
+article header
+{
+	background-color: #CDF0EB; /* Цвет фона элемента*/
+/*	border:thin #54985B solid; /* Выбор границ элемента*/
+	padding: 10px; /* Пространство внутри элемента*/ 
+	margin: auto; /* Пространство за пределами документа. В данном случае располагает по центру*/
+	margin-bottom: 10px; /* Отступ снизу элемента*/
+	margin-top: 10px; /* Отступ сверху элемента*/
+	text-align:center; /* Расположение текста внутри элемента*/
+	width:90%; /* Ширина блока*/
+	min-width: 800px; /* Минимальный размер блока */
+	max-width: 1100px; /* Максимальный размер элемента*/
+}
+
+time
+{
+	color: #999999;
+	float: right;
+}
+
+.floatfigure
+{
+	float:left;
+	margin-left:2px;
+	margin-top:2px;
+	margin-right:25px;
+	margin-bottom:2px;
+}
+
+.floatfigure figcaption
+{
+	max-width:150px;
+	font-size:small;
+	font-style:italic;
+	margin-bottom:5px;
+}
+
+#scriptHTML
+{
+	background-color:#DEE9E9;
+	border:thin #533D3D solid;
+	padding: 15px;
+	padding-top: 0px;
+}
