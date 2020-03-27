@@ -23,14 +23,8 @@ const app = new Vue({
     addProduct(product){
       console.log(product.id_product);
     },
-    searchRender() {
-        this.filtredArr
-    },
     searchInput(event){
-      console.log(event);
-      this.filtredArr = [...this.products]
-
-      return this.filtredArr.filter(el => el.product_name.toLowerCase().indexOf(this.searchproducts.toLowerCase()) !== -1)
+      return this.filtredArr = this.products.filter(el => el.product_name.toLowerCase().indexOf(this.searchproducts.toLowerCase()) !== -1)
     }
   },
   mounted(){
