@@ -1,8 +1,7 @@
-Vue.component('cart', {
+  Vue.component('cart', {
     data(){
       return {
           imgCart: 'https://placehold.it/50x100',
-          cartUrl: '/getBasket.json',
           cartItems: [],
           showCart: false,
       }
@@ -25,20 +24,28 @@ Vue.component('cart', {
             }
         },
         remove(item) {
-            this.$parent.getJson(`${API}/deleteFromBasket.json`)
-                .then(data => {
-                    if(data.result === 1) {
-                        if(item.quantity>1){
-                            item.quantity--;
-                        } else {
-                            this.cartItems.splice(this.cartItems.indexOf(item), 1)
-                        }
-                    }
-                })
+            if(item.quantity === 1){
+                this.$parent.deleteJson(`/api/cart/${item.id_product}`, {quantity: -1});
+                this.cartItems.splice(this.cartItems.indexOf(item), 1)
+            }else {
+                this.$parent.deleteJson(`/api/cart/${item.id_product}`, {quantity: -1});
+                item.quantity--;
+            }
+
+
+                // .then(data => {
+                //     if(data.result === 1) {
+                //         if(item.quantity>1){
+                //             item.quantity--;
+                //         } else {
+                //
+                //         }
+                //     }
+                // })
         },
     },
     mounted(){
-        this.$parent.getJson(`${API + this.cartUrl}`)
+        this.$parent.getJson(`/api/cart/`)
             .then(data => {
                 for(let el of data.contents){
                     this.cartItems.push(el);

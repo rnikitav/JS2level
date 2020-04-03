@@ -1,6 +1,7 @@
 temp/
 dictionary/
 .idea/
+node_modules/
 .log
 *.sass
 *.css.map
