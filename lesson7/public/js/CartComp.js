@@ -28,7 +28,7 @@
                 this.$parent.deleteJson(`/api/cart/${item.id_product}`, {quantity: -1});
                 this.cartItems.splice(this.cartItems.indexOf(item), 1)
             }else {
-                this.$parent.deleteJson(`/api/cart/${item.id_product}`, {quantity: -1});
+                this.$parent.putJson(`/api/cart/${item.id_product}`, {quantity: -1});
                 item.quantity--;
             }
 
