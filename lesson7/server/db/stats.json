@@ -1,0 +1,12 @@
+{
+  "amount": 46600,
+  "countGoods": 2,
+  "contents": [
+    {
+      "quantity": 124,
+      "id_product": 124,
+      "product_name": "Keyboard",
+      "price": 1600
+    }
+  ]
+}
