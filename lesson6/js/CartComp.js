@@ -46,7 +46,7 @@ Vue.component('cart', {
             });
     },
     template: `
-        <div>
+        <div :style="{'display':'inline-block'}">
             <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
             <div class="cart-block" v-show="showCart">
                 <p v-if="!cartItems.length">Корзина пуста</p>
