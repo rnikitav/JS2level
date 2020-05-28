@@ -10,6 +10,11 @@ module.exports = {
         publicPath: "/",
         filename: "js/[name].js"
     },
+    watch: true,
+    watchOptions: {
+        aggregateTimeout: 500,
+        poll: 1000 // порверяем измемения раз в секунду
+    },
     target: 'web',
     devtool: "#source-map",
     module: {
